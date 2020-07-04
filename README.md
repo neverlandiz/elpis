@@ -19,9 +19,9 @@
 - NPCs
 - Dialogue boxes
 
-- Health
-- Mobs
-- Melee
+- *Health
+- *Mobs
+- *Melee
 - Dashing
 - Projectiles
 
