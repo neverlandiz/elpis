@@ -16,8 +16,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Pandora's Box"
-run/main_scene="res://World.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://World/World.tscn"
+config/icon="res://Godot/icon.png"
 
 [display]
 
@@ -77,4 +77,4 @@ ui_up={
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Godot/default_env.tres"
