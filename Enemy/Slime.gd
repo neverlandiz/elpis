@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+const EnemyDeathEffect = preload("res://Effect/EnemyDeathEffect.tscn")
+const HitEffect = preload("res://Effect/HitEffect.tscn")
+
 export var ACCELERATION = 300
 export var MAX_SPEED = 50
 export var FRICTION = 0.25
@@ -22,11 +25,17 @@ onready var sprite = $AnimatedSprite
 onready var playerDetection = $PlayerDetection
 onready var softCollision = $SoftCollision
 onready var wanderController = $WanderController
+onready var hurtbox = $Hurtbox
+onready var stats = $Stats
+
 
 func _ready():
 	state = pick_random_state([IDLE, WANDER])
+	
 
 func _physics_process(delta):
+	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
+	knockback = move_and_slide(knockback)
 	
 	match state:
 		IDLE:
@@ -73,4 +82,20 @@ func seek_player():
 func pick_random_state(state_list):
 	state_list.shuffle()
 	return state_list.pop_front()
-	
+
+func create_hit_effect():
+	var effect = HitEffect.instance()
+	var main = get_tree().current_scene
+	main.add_child(effect)
+	effect.global_position = global_position
+
+func _on_Hurtbox_area_entered(area):
+	stats.health -= area.damage
+	knockback = Vector2.RIGHT * 100
+	create_hit_effect()
+
+func _on_Stats_no_health():
+	queue_free() 
+	var enemyDeathEffect = EnemyDeathEffect.instance()
+	get_parent().add_child(enemyDeathEffect)
+	enemyDeathEffect.global_position = global_position

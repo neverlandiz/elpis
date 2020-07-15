@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+const HitEffect = preload("res://Effect/HitEffectPlayer.tscn")
+const PlayerDeathEffect = preload("res://Effect/PlayerDeathEffect.tscn")
+
 export var ACCELERATION = 500
 export var MAX_SPEED = 80
 export var FRICTION = 0.25
@@ -7,12 +10,48 @@ export var AIR_RESISTANCE = 0.02
 export var GRAVITY = 200
 export var JUMP_FORCE = 125
 
-var motion = Vector2.ZERO
+enum{
+	MOVE,
+	ATTACK
+}
 
-onready var sprite = $Sprite
+var state = MOVE
+var motion = Vector2.ZERO
+var direction = Vector2.RIGHT
+var stats = PlayerStats
+
+onready var sprite = $Movements
+onready var attackRightSprite = $AttackRight
+onready var attackLeftSprite = $AttackLeft
 onready var animationPlayer = $AnimationPlayer
+onready var hurtbox = $Hurtbox
+onready var swordHitbox = $HitboxPivot/SwordHitbox
+onready var hurtAnimationPlayer = $HurtAnimationPlayer
+
+func _ready():
+	stats.connect("no_health", self, "queue_free")
+	attackRightSprite.hide()
+	attackLeftSprite.hide()
 
 func _physics_process(delta):
+	
+	if Input.is_action_just_pressed("ui_right"):
+		direction = Vector2.RIGHT
+	if Input.is_action_just_pressed("ui_left"):
+		direction = Vector2.LEFT
+	
+	match state:
+		MOVE:
+			move(delta)
+		ATTACK:
+			attack()
+			
+	
+
+func move(delta):
+	sprite.show()
+	attackRightSprite.hide()
+	attackLeftSprite.hide()
 	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
 	if x_input != 0:
@@ -46,3 +85,46 @@ func _physics_process(delta):
 	
 	motion = move_and_slide(motion, Vector2.UP)
 	
+	if Input.is_action_just_pressed("attack"):
+		state = ATTACK
+
+func attack():
+	sprite.hide()
+	
+	if(direction == Vector2.RIGHT):
+		attackLeftSprite.hide()
+		attackRightSprite.show()
+		animationPlayer.play("AttackRight")
+	elif(direction == Vector2.LEFT):
+		attackRightSprite.hide()
+		attackLeftSprite.show()
+		animationPlayer.play("AttackLeft")
+	
+	motion = Vector2.ZERO
+	
+
+func attack_animation_finished():
+	state = MOVE
+
+func create_hit_effect():
+	var effect = HitEffect.instance()
+	var main = get_tree().current_scene
+	main.add_child(effect)
+	effect.global_position = global_position
+
+func _on_Hurtbox_area_entered(area):
+	stats.health -= area.damage
+	hurtbox.start_invincibility(0.6)
+	create_hit_effect()
+	if(stats.health <= 0):
+		var playerDeathEffect = PlayerDeathEffect.instance()
+		get_parent().add_child(playerDeathEffect)
+		playerDeathEffect.global_position = global_position
+		
+
+func _on_Hurtbox_invincibility_started():
+	hurtAnimationPlayer.play("StartInvincibility")
+
+func _on_Hurtbox_invincibility_ended():
+	hurtAnimationPlayer.play("StopInvincibility")
+

@@ -3,7 +3,7 @@
 [ext_resource path="res://Portal/Door.gd" type="Script" id=1]
 [ext_resource path="res://Portal/door.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=59]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 17 )
 
 [node name="Door" type="Area2D"]
@@ -18,4 +18,4 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )
-shape = SubResource( 59 )
+shape = SubResource( 1 )

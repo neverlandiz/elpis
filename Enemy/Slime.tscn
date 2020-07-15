@@ -1,10 +1,14 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Enemy/PlayerDetection.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy/Slime.gd" type="Script" id=2]
-[ext_resource path="res://Enemy/SoftCollision.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Collisions/SoftCollision.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Enemy/slime_walk_anim_strip_18.png" type="Texture" id=4]
 [ext_resource path="res://Enemy/WanderController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Collisions/Hurtbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Collisions/Hitbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Collisions/SwordHitbox.gd" type="Script" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -78,22 +82,31 @@ animations = [ {
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id=18]
-radius = 39.0
+radius = 52.0
 
 [sub_resource type="CircleShape2D" id=19]
 radius = 7.0
 
+[sub_resource type="CapsuleShape2D" id=20]
+radius = 5.0
+height = 6.0
+
+[sub_resource type="CircleShape2D" id=21]
+radius = 4.0
+
 [node name="Slime" type="KinematicBody2D"]
 collision_layer = 16
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 16 )
 animation = "Walk"
-frame = 4
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 17 )
 
@@ -110,13 +123,43 @@ collision_layer = 32
 collision_mask = 32
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
+visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 19 )
 
 [node name="WanderController" parent="." instance=ExtResource( 5 )]
+
+[node name="Hurtbox" parent="." instance=ExtResource( 6 )]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+visible = false
+position = Vector2( 0, 4 )
+shape = SubResource( 20 )
+
+[node name="Stats" parent="." instance=ExtResource( 7 )]
+max_health = 100
+
+[node name="SlimeHitbox" parent="." instance=ExtResource( 8 )]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" parent="SlimeHitbox" index="0"]
+position = Vector2( 0, 8 )
+shape = SubResource( 21 )
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
+[connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 
 [editable path="PlayerDetection"]
 
 [editable path="SoftCollision"]
 
 [editable path="WanderController"]
+
+[editable path="Hurtbox"]
+
+[editable path="SlimeHitbox"]

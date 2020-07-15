@@ -4,8 +4,9 @@
 # TASKS
 
 ## Katherine
-- Basic movement
-- Portals
+- Hurtbox/Hitbox
+- Health
+- New World
 
 ## Kevin
 - Items
@@ -19,11 +20,13 @@
 - NPCs
 - Dialogue boxes
 
-- *Health
-- *Mobs
-- *Melee
 - Dashing
 - Projectiles
 
 - Saving
+
+## Completed
+- Basic movement
+- Portals
+- Mobs
 
