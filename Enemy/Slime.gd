@@ -91,8 +91,13 @@ func create_hit_effect():
 
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
-	knockback = Vector2.RIGHT * 100
 	create_hit_effect()
+	var playerPos = playerDetection.player.position
+	var dir = playerPos - self.position
+	if dir.x > 0:
+		knockback = Vector2.LEFT * 100
+	elif dir.x < 0:
+		knockback = Vector2.RIGHT * 100
 
 func _on_Stats_no_health():
 	queue_free() 

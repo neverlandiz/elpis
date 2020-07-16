@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Mysterious Forest Night (update 3.0)/Mysterious Night Layer 01.png" type="Texture" id=2]
+[ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Mysterious Forest Night (update 3.0)/Mysterious Night Layer 02.png" type="Texture" id=4]
+[ext_resource path="res://Mysterious Forest Night (update 3.0)/Mysterious Night Layer 03.png" type="Texture" id=5]
+[ext_resource path="res://Mysterious Forest Night (update 3.0)/Mysterious Night Layer 05.png" type="Texture" id=6]
+[ext_resource path="res://Mysterious Forest Night (update 3.0)/Mysterious Night Layer 06.png" type="Texture" id=7]
+[ext_resource path="res://Portal/Door.tscn" type="PackedScene" id=8]
+
+[node name="World5" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource( 3 )]
+visible = false
+cell_size = Vector2( 14, 14 )
+tile_data = PoolIntArray( 65535, 0, 3, 101, 0, 3, 131071, 0, 65539, 65637, 0, 65539, 196607, 0, 65539, 131173, 0, 65539, 262143, 0, 65539, 196709, 0, 65539, 327679, 0, 65539, 262245, 0, 65539, 393215, 0, 65539, 327781, 0, 65539, 458751, 0, 65539, 393317, 0, 65539, 524287, 0, 65539, 458853, 0, 65539, 589823, 0, 65539, 524389, 0, 65539, 655359, 0, 65539, 589925, 0, 65539, 720895, 0, 65539, 655461, 0, 65539, 786431, 0, 131075, 720997, 0, 65539, 786432, 0, 196608, 786433, 0, 196609, 786434, 0, 196609, 786435, 0, 196609, 786436, 0, 196609, 786437, 0, 196609, 786438, 0, 196609, 786439, 0, 196609, 786440, 0, 196609, 786441, 0, 196609, 786442, 0, 196609, 786443, 0, 196609, 786444, 0, 196609, 786445, 0, 196609, 786446, 0, 196609, 786447, 0, 196609, 786448, 0, 196609, 786449, 0, 196609, 786450, 0, 196609, 786451, 0, 196609, 786452, 0, 196609, 786453, 0, 196609, 786454, 0, 196609, 786455, 0, 196609, 786456, 0, 196609, 786457, 0, 196609, 786458, 0, 196609, 786459, 0, 196609, 786460, 0, 196609, 786461, 0, 196609, 786462, 0, 196609, 786463, 0, 196609, 786464, 0, 196609, 786465, 0, 196609, 786466, 0, 196609, 786467, 0, 196609, 786468, 0, 196609, 786469, 0, 196609, 786470, 0, 196609, 786471, 0, 196609, 786472, 0, 196609, 786473, 0, 196609, 786474, 0, 196609, 786475, 0, 196609, 786476, 0, 196609, 786477, 0, 196609, 786478, 0, 196609, 786479, 0, 196609, 786480, 0, 196609, 786481, 0, 196609, 786482, 0, 196609, 786483, 0, 196609, 786484, 0, 196609, 786485, 0, 196609, 786486, 0, 196609, 786487, 0, 196609, 786488, 0, 196609, 786489, 0, 196609, 786490, 0, 196609, 786491, 0, 196609, 786492, 0, 196609, 786493, 0, 196609, 786494, 0, 196609, 786495, 0, 196609, 786496, 0, 196609, 786497, 0, 196609, 786498, 0, 196609, 786499, 0, 196609, 786500, 0, 196609, 786501, 0, 196609, 786502, 0, 196609, 786503, 0, 196609, 786504, 0, 196609, 786505, 0, 196609, 786506, 0, 196609, 786507, 0, 196609, 786508, 0, 196609, 786509, 0, 196609, 786510, 0, 196609, 786511, 0, 196609, 786512, 0, 196609, 786513, 0, 196609, 786514, 0, 196609, 786515, 0, 196609, 786516, 0, 196609, 786517, 0, 196609, 786518, 0, 196609, 786519, 0, 196609, 786520, 0, 196609, 786521, 0, 196609, 786522, 0, 196609, 786523, 0, 196609, 786524, 0, 196609, 786525, 0, 196609, 786526, 0, 196609, 786527, 0, 196609, 786528, 0, 196609, 786529, 0, 196609, 786530, 0, 196609, 786531, 0, 196609, 786532, 0, 196609, 786533, 0, 196615 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 19, 174 )
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 1630
+limit_bottom = 180
+limit_smoothed = true
+smoothing_enabled = true
+
+[node name="Door" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1406, 148 )
+next_world = "res://World/World4.tscn"
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 19, 174 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1630, 0 )
+
+[node name="Background1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2( 0.71, 0.71 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2336, 256 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1.5, 1 )
+motion_mirroring = Vector2( 1630, 0 )
+
+[node name="Background2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2( 0.71, 0.71 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2032, 256 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 1630, 0 )
+
+[node name="Background3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+scale = Vector2( 0.71, 0.71 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2032, 256 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1630, 0 )
+
+[node name="Background4" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+scale = Vector2( 0.71, 0.71 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2032, 256 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 1 )
+motion_mirroring = Vector2( 1630, 0 )
+
+[node name="Background5" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+scale = Vector2( 0.71, 0.71 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 2032, 256 )
