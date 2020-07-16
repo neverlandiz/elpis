@@ -12,10 +12,10 @@ func _init():
 	style.set_border_width_all(1)
 	set('custom_styles/panel', style)
 	
-func fillSlot(newItem): 
+func fillSlot(newItem, itemAmount): 
 	empty = false
 	subscript = Label.new()
-	subscript.set_text(str(newItem.itemAmount))
+	subscript.set_text(str(itemAmount))
 
 	var dynamic_font = DynamicFont.new()
 	dynamic_font.font_data = load("res://Display/Handlee-Regular.ttf")

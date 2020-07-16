@@ -120,7 +120,6 @@ func _on_Hurtbox_area_entered(area):
 		var playerDeathEffect = PlayerDeathEffect.instance()
 		get_parent().add_child(playerDeathEffect)
 		playerDeathEffect.global_position = global_position
-		
 
 func _on_Hurtbox_invincibility_started():
 	hurtAnimationPlayer.play("StartInvincibility")

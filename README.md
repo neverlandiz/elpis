@@ -10,14 +10,16 @@
 - Checkpoints
 
 ## Kevin
-- Items
-- Inventory
-
+- toggle to hide inventory display
+- add more items
+- make UI move along with player
+- clean up code
 - heart UI
 - NPCs
 - Dialogue boxes
 - Merchant NPCs
-- popup notifications
+- popups
+- corner notifications
 
 ## Misc
 - Pseudo-quests
@@ -33,4 +35,6 @@
 - Hurtbox/Hitbox
 - Health
 - New World
+- Items
+- Inventory
 
