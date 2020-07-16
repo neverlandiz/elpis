@@ -27,6 +27,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var hurtbox = $Hurtbox
 onready var swordHitbox = $HitboxPivot/SwordHitbox
 onready var hurtAnimationPlayer = $HurtAnimationPlayer
+onready var enemyDetection = $EnemyDetection
 
 func _ready():
 	stats.connect("no_health", self, "queue_free")
@@ -34,7 +35,6 @@ func _ready():
 	attackLeftSprite.hide()
 
 func _physics_process(delta):
-	
 	if Input.is_action_just_pressed("ui_right"):
 		direction = Vector2.RIGHT
 	if Input.is_action_just_pressed("ui_left"):
@@ -46,7 +46,6 @@ func _physics_process(delta):
 		ATTACK:
 			attack()
 			
-	
 
 func move(delta):
 	sprite.show()
@@ -116,6 +115,11 @@ func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
 	hurtbox.start_invincibility(0.6)
 	create_hit_effect()
+	
+	var enemyPos = enemyDetection.enemy.position
+	var dir = enemyPos - self.position
+	motion.x -= dir.x * 90
+	
 	if(stats.health <= 0):
 		var playerDeathEffect = PlayerDeathEffect.instance()
 		get_parent().add_child(playerDeathEffect)
