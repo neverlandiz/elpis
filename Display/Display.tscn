@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Display/Handlee-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Display/Inventory/Panel.png" type="Texture" id=2]
 [ext_resource path="res://Display/Inventory.gd" type="Script" id=3]
+[ext_resource path="res://Display/Health/HeartUIFull.png" type="Texture" id=4]
+[ext_resource path="res://Display/Health/HeartUIEmpty.png" type="Texture" id=5]
+[ext_resource path="res://Display/Health/Health.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -14,11 +17,11 @@ bg_color = Color( 0.505882, 0.305882, 0.305882, 1 )
 size = 9
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 6
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 4
 font_data = ExtResource( 1 )
 
@@ -26,6 +29,9 @@ font_data = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Inventory" type="NinePatchRect" parent="."]
 margin_left = 34.6056
@@ -91,7 +97,7 @@ __meta__ = {
 margin_top = 1.0
 margin_right = 90.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 align = 1
 autowrap = true
 uppercase = true
@@ -100,7 +106,7 @@ uppercase = true
 margin_top = 16.0
 margin_right = 90.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 align = 1
 autowrap = true
 __meta__ = {
@@ -116,8 +122,38 @@ margin_left = 33.6525
 margin_top = 54.318
 margin_right = 55.6525
 margin_bottom = 66.318
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "USE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Control" parent="."]
+margin_left = 7.72215
+margin_top = 20.3865
+margin_right = 47.7221
+margin_bottom = 60.3865
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthEmpty" type="TextureRect" parent="Health"]
+margin_right = 14.0
+margin_bottom = 11.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthFull" type="TextureRect" parent="Health"]
+margin_right = 14.0
+margin_bottom = 11.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

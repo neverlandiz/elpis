@@ -40,7 +40,6 @@ func addItem(itemName):
 		self.playerItems[itemName] = {"amount": 1}
 		createNewItem(itemName)
 
-		
 func createNewItem(itemName):
 	var item = ItemClass.new(itemName, ITEMMAP[itemName]["itemImg"])
 	var slot = getFreeSlot()
@@ -48,6 +47,7 @@ func createNewItem(itemName):
 	self.playerItems[itemName]["slot"] = slot
 
 func _ready():
+	self.visible = false
 	var slots = get_node("SlotsContainer/Slots")
 	for i in range(10): 
 		var slot = ItemSlotClass.new()
@@ -55,13 +55,14 @@ func _ready():
 		slots.add_child(slot)
 		slot.connect("gui_input", self, "slot_gui_input", [slot])
 
-	# Load existing items for player
-	for itemName in self.playerItems: 
+	for itemName in self.playerItems:	# Load existing items for player
 		createNewItem(itemName)
 	
 	PlayerStats.connect("add_item_to_inventory", self, "addItem")
-#	var button = get_node("InfoContainer/Button")
-#	button.connect("gui_input", self, "use_button_gui_input", [button])
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed("toggle_inventory"):
+		self.visible = !self.visible
 		
 func slot_gui_input(event: InputEvent, slot: ItemSlotClass): 
 	if event is InputEventMouseButton: 
@@ -82,7 +83,7 @@ func _on_Button_pressed():
 	
 	print("Using item " + itemName)
 	if "health" in ITEMMAP[itemName]["effects"]: 
-		PlayerStats.addHealth(ITEMMAP[itemName]["effects"]["health"])
+		PlayerStats.health += ITEMMAP[itemName]["effects"]["health"]
 		print("Increasing health by " + str(ITEMMAP[displayingItem]["effects"]["health"]))
 		
 	self.playerItems[itemName]["amount"] -= 1

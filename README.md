@@ -10,11 +10,9 @@
 - Checkpoints
 
 ## Kevin
-- toggle to hide inventory display
 - add more items
 - make UI move along with player
-- clean up code
-- heart UI
+
 - NPCs
 - Dialogue boxes
 - Merchant NPCs
@@ -37,4 +35,6 @@
 - New World
 - Items
 - Inventory
+- toggle to hide inventory display
+- heart UI
 
