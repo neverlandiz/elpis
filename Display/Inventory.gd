@@ -80,11 +80,12 @@ func displayItemInfo(itemName):
 func _on_Button_pressed(): 
 	if !displayingItem or self.playerItems[displayingItem]["amount"] <= 0: 
 		return
-	var itemName = displayingItem	
+	var itemName = displayingItem
 	print("Using item " + itemName)
 	if "health" in ITEMMAP[itemName]["effects"]: 
 		if PlayerStats.health == PlayerStats.max_health: 
-			print("health already full!")
+#			get_parent().get_node("PopupDialog").message("Health already full!")
+			PlayerStats.sendPopupMessage("Health already full!")
 			return
 		PlayerStats.health += ITEMMAP[itemName]["effects"]["health"]
 		print("Increasing health by " + str(ITEMMAP[displayingItem]["effects"]["health"]))

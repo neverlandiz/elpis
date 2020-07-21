@@ -10,13 +10,10 @@
 - Checkpoints
 
 ## Kevin
-- add more items
-
 - NPCs
 - Dialogue boxes
-- Merchant NPCs
-- popups
-- corner notifications
+- Merchant NPCs (shop UI)
+- Popup confirmation menus
 
 ## Misc
 - Pseudo-quests
@@ -36,4 +33,5 @@
 - Inventory
 - toggle to hide inventory display
 - make UI move along with player
+- corner notifications
 

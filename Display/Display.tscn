@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Display/Handlee-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Display/Inventory/Panel.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Display/Health/HeartUIFull.png" type="Texture" id=4]
 [ext_resource path="res://Display/Health/HeartUIEmpty.png" type="Texture" id=5]
 [ext_resource path="res://Display/Health/Health.gd" type="Script" id=6]
+[ext_resource path="res://Display/PopupDialog.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.505882, 0.305882, 0.305882, 1 )
@@ -19,6 +20,10 @@ size = 6
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
+size = 4
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 4
 font_data = ExtResource( 1 )
 
@@ -148,4 +153,25 @@ stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PopupDialog" type="PopupDialog" parent="."]
+visible = true
+margin_left = 235.0
+margin_top = 5.0
+margin_right = 315.0
+margin_bottom = 25.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="Label" parent="PopupDialog"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 75.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 6 )
+text = "test"
+
+[node name="Tween" type="Tween" parent="PopupDialog"]
 [connection signal="pressed" from="Inventory/InfoContainer/Button" to="Inventory" method="_on_Button_pressed"]
