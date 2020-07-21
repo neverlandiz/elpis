@@ -13,14 +13,14 @@ var playerItems = {"Crystal": {
 const ITEMMAP = {
 	"Crystal": {
 		"itemImg": preload("res://Display/Inventory/Crystal.png"), 
-		"description": "dis is a crystal", 
+		"description": "dis is a crystal,\n Restores x2 health", 
 		"effects": {
 			"health": 2
 		}
 	}, 
 	"Potion": {
 		"itemImg": preload("res://Display/Inventory/Potion.png"), 
-		"description": "*genji voice*: i need healing! bhab ahbs adflif", 
+		"description": "*genji voice*: i need healing!\n Restores x1 health", 
 		"effects": {
 			"health": 1
 		}
@@ -76,13 +76,16 @@ func displayItemInfo(itemName):
 	get_node("InfoContainer/ItemName").set_text("<" + itemName + ">")	
 	get_node("InfoContainer/ItemDescription").set_text(itemDescription)
 	
+# Use item
 func _on_Button_pressed(): 
 	if !displayingItem or self.playerItems[displayingItem]["amount"] <= 0: 
 		return
-	var itemName = displayingItem
-	
+	var itemName = displayingItem	
 	print("Using item " + itemName)
 	if "health" in ITEMMAP[itemName]["effects"]: 
+		if PlayerStats.health == PlayerStats.max_health: 
+			print("health already full!")
+			return
 		PlayerStats.health += ITEMMAP[itemName]["effects"]["health"]
 		print("Increasing health by " + str(ITEMMAP[displayingItem]["effects"]["health"]))
 		

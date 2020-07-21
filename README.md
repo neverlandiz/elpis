@@ -11,7 +11,6 @@
 
 ## Kevin
 - add more items
-- make UI move along with player
 
 - NPCs
 - Dialogue boxes
@@ -36,5 +35,5 @@
 - Items
 - Inventory
 - toggle to hide inventory display
-- heart UI
+- make UI move along with player
 
