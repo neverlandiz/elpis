@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mysterious Night Layer 02.png-496b0f1d8b10ddb9215a83164063d9ce.stex"
+path="res://.import/Mysterious Night Layer 05.png-c59a0b30685e81797be8429d76a7760b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mysterious Forest Night (update 3.0)/Mysterious Night Layer 02.png"
-dest_files=[ "res://.import/Mysterious Night Layer 02.png-496b0f1d8b10ddb9215a83164063d9ce.stex" ]
+source_file="res://World/Mysterious Forest Night (update 3.0)/Mysterious Night Layer 05.png"
+dest_files=[ "res://.import/Mysterious Night Layer 05.png-c59a0b30685e81797be8429d76a7760b.stex" ]
 
 [params]
 

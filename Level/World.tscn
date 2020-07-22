@@ -570,6 +570,7 @@ smoothing_enabled = true
 
 [node name="Door" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 304, 77 )
+next_world = "res://Level/World4.tscn"
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 11, 31 )

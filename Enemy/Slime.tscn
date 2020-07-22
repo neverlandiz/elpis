@@ -6,8 +6,9 @@
 [ext_resource path="res://Enemy/slime_walk_anim_strip_18.png" type="Texture" id=4]
 [ext_resource path="res://Enemy/WanderController.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Collisions/Hurtbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Stats.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Collisions/Hitbox.tscn" type="PackedScene" id=8]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )

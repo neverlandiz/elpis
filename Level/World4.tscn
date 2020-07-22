@@ -1,24 +1,24 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemy/Slime.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Portal/Door.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemy/Barrier.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/background.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy/Barrier.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Portal/Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/background.png" type="Texture" id=6]
+[ext_resource path="res://Enemy/Slime.tscn" type="PackedScene" id=6]
 
 [node name="World4" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 1.33333, 1.2 )
-texture = ExtResource( 6 )
+texture = ExtResource( 1 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 1232, 160.271 )
 
 [node name="TileMap" parent="." instance=ExtResource( 5 )]
 
-[node name="Barrier" parent="." instance=ExtResource( 4 )]
+[node name="Barrier" parent="." instance=ExtResource( 3 )]
 tile_data = PoolIntArray( 590032, 0, 0, 590033, 0, 0, 590034, 0, 0, 590035, 0, 0, 590036, 0, 0, 590037, 0, 0, 590038, 0, 0, 590039, 0, 0, 590040, 0, 0, 590041, 0, 0, 590042, 0, 0, 590043, 0, 0, 590044, 0, 0, 590045, 0, 0, 590046, 0, 0, 590047, 0, 0, 655568, 0, 196608, 655583, 0, 196608, 721104, 0, 655360, 721119, 0, 196608, 786640, 0, 65536, 786655, 0, 327680, 852176, 0, 655360, 852191, 0, 589824, 917712, 0, 196608, 917727, 0, 458752, 983248, 0, 0, 983263, 0, 0, 1311004, 0, 0, 1311005, 0, 0, 1311006, 0, 0, 1311007, 0, 0, 1311008, 0, 0, 1311009, 0, 0, 1311010, 0, 0, 1311011, 0, 0, 1311012, 0, 0, 1311013, 0, 0, 1311014, 0, 0, 1311015, 0, 0, 1311016, 0, 0, 1311017, 0, 0, 1311018, 0, 0, 1311019, 0, 0, 1311020, 0, 0, 1311021, 0, 0, 1311022, 0, 0, 1311023, 0, 0, 1311024, 0, 0, 1311025, 0, 0, 1311026, 0, 0, 1311027, 0, 0, 1376540, 0, 65536, 1376563, 0, 131072, 1442076, 0, 196608, 1442099, 0, 196608, 1507612, 0, 131072, 1507635, 0, 262144, 1573148, 0, 131072, 1573171, 0, 327680, 1638684, 0, 262144, 1638707, 0, 655360, 1704220, 0, 589824, 1704243, 0, 589824, 1769756, 0, 0, 1769779, 0, 0, 2490452, 0, 0, 2490453, 0, 0, 2490454, 0, 0, 2490455, 0, 0, 2490456, 0, 0, 2490457, 0, 0, 2490458, 0, 0, 2490459, 0, 0, 2490460, 0, 0, 2490461, 0, 0, 2490462, 0, 0, 2490463, 0, 0, 2490464, 0, 0, 2490465, 0, 0, 2490466, 0, 0, 2490467, 0, 0, 2490468, 0, 0, 2490469, 0, 0, 2490470, 0, 0, 2490471, 0, 0, 2490472, 0, 0, 2490473, 0, 0, 2490474, 0, 0, 2490475, 0, 0, 2490476, 0, 0, 2490477, 0, 0, 2490478, 0, 0, 2490479, 0, 0, 2490480, 0, 0, 2490481, 0, 0, 2490482, 0, 0, 2490483, 0, 0, 2490484, 0, 0, 2490485, 0, 0, 2490486, 0, 0, 2490487, 0, 0, 2490488, 0, 0, 2490489, 0, 0, 2490490, 0, 0, 2490491, 0, 0, 2490492, 0, 0, 2490493, 0, 0, 2490494, 0, 0, 2490495, 0, 0, 2555988, 0, 196608, 2556031, 0, 262144, 2556264, 0, 0, 2556265, 0, 0, 2556266, 0, 0, 2556267, 0, 0, 2556268, 0, 0, 2556269, 0, 0, 2556270, 0, 0, 2556271, 0, 0, 2621524, 0, 262144, 2621567, 0, 131072, 2621800, 0, 655360, 2621807, 0, 524288, 2687060, 0, 327680, 2687103, 0, 65536, 2687336, 0, 589824, 2687343, 0, 131072, 2752596, 0, 65536, 2752639, 0, 589824, 2752872, 0, 589824, 2752879, 0, 524288, 2818132, 0, 0, 2818175, 0, 0, 2818408, 0, 0, 2818415, 0, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -34,29 +34,29 @@ smoothing_enabled = true
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Door" parent="YSort" instance=ExtResource( 3 )]
+[node name="Door" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 1599, 140 )
-next_world = "res://World/World5.tscn"
+next_world = "res://Level/World5.tscn"
 
-[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 11, 143 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="YSort/Player"]
 position = Vector2( 0, 1 )
 remote_path = NodePath("../../../Camera2D")
 
-[node name="Slime" parent="YSort" instance=ExtResource( 2 )]
+[node name="Slime" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 421, 164 )
 collision_mask = 65
 
-[node name="Slime2" parent="YSort" instance=ExtResource( 2 )]
+[node name="Slime2" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 867, 52 )
 collision_mask = 65
 
-[node name="Slime3" parent="YSort" instance=ExtResource( 2 )]
+[node name="Slime3" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 1177, 100 )
 collision_mask = 65
 
-[node name="Slime4" parent="YSort" instance=ExtResource( 2 )]
+[node name="Slime4" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 1456, 164 )
 collision_mask = 65

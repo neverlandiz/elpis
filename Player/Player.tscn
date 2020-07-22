@@ -183,19 +183,18 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13 ]
 }
 
-[sub_resource type="CircleShape2D" id=12]
+[sub_resource type="CircleShape2D" id=8]
 radius = 43.0116
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 3.0
 height = 6.0
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=10]
 radius = 11.0
 height = 0.0
 
-[sub_resource type="Animation" id=10]
-resource_name = "StartInvincibility"
+[sub_resource type="Animation" id=11]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Movements:frame")
@@ -210,8 +209,7 @@ tracks/0/keys = {
 "values": [ 56 ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "StopInvincibility"
+[sub_resource type="Animation" id=12]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Movements:frame")
@@ -278,7 +276,7 @@ cast_to = Vector2( 0, 2 )
 
 [node name="CollisionShape2D" parent="EnemyDetection" index="0"]
 position = Vector2( 0, -4 )
-shape = SubResource( 12 )
+shape = SubResource( 8 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -287,7 +285,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, -5 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="HitboxPivot" type="Position2D" parent="."]
 visible = false
@@ -303,12 +301,12 @@ collision_mask = 8
 
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
 position = Vector2( 13, -1.19209e-06 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 disabled = true
 
 [node name="HurtAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/StartInvincibility = SubResource( 10 )
-anims/StopInvincibility = SubResource( 11 )
+anims/StartInvincibility = SubResource( 11 )
+anims/StopInvincibility = SubResource( 12 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_Hurtbox_invincibility_started"]

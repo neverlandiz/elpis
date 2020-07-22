@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Pandora's Box"
-run/main_scene="res://World/World4.tscn"
+run/main_scene="res://Level/World4.tscn"
 config/icon="res://Godot/icon.png"
 
 [autoload]

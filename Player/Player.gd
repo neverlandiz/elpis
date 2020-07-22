@@ -19,6 +19,7 @@ var state = MOVE
 var motion = Vector2.ZERO
 var direction = Vector2.RIGHT
 var stats = PlayerStats
+var attackLock = false
 
 onready var sprite = $Movements
 onready var attackRightSprite = $AttackRight
@@ -35,10 +36,7 @@ func _ready():
 	attackLeftSprite.hide()
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_right"):
-		direction = Vector2.RIGHT
-	if Input.is_action_just_pressed("ui_left"):
-		direction = Vector2.LEFT
+	check_direction()
 	
 	match state:
 		MOVE:
@@ -57,20 +55,25 @@ func move(delta):
 		animationPlayer.play("Run")
 		motion.x += x_input * ACCELERATION * delta
 		motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
-		sprite.flip_h = x_input < 0
+		#sprite.flip_h = x_input < 0
+		check_direction()
+		sprite.flip_h = direction==Vector2.LEFT
+
 	else:
+		check_direction()
+		sprite.flip_h = direction==Vector2.LEFT
 		animationPlayer.play("Idle")
 	
 	motion.y += GRAVITY * delta
 	
 	if is_on_floor():
+		attackLock = false
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, FRICTION)
 			
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = -JUMP_FORCE
 	else:
-		
 		if(motion.y < 0):
 			animationPlayer.play("JumpUp")
 		else:
@@ -84,23 +87,24 @@ func move(delta):
 	
 	motion = move_and_slide(motion, Vector2.UP)
 	
-	if Input.is_action_just_pressed("attack"):
+	
+	if Input.is_action_just_pressed("attack") and attackLock == false:
 		state = ATTACK
 
 func attack():
 	sprite.hide()
-	
-	if(direction == Vector2.RIGHT):
+	if(direction == Vector2.RIGHT and attackLock == false):
 		attackLeftSprite.hide()
 		attackRightSprite.show()
 		animationPlayer.play("AttackRight")
-	elif(direction == Vector2.LEFT):
+		attackLock = true
+	elif(direction == Vector2.LEFT and attackLock == false):
 		attackRightSprite.hide()
 		attackLeftSprite.show()
 		animationPlayer.play("AttackLeft")
-	
+		attackLock = true
+		
 	motion = Vector2.ZERO
-	
 
 func attack_animation_finished():
 	state = MOVE
@@ -131,3 +135,8 @@ func _on_Hurtbox_invincibility_started():
 func _on_Hurtbox_invincibility_ended():
 	hurtAnimationPlayer.play("StopInvincibility")
 
+func check_direction():
+	if Input.is_action_just_pressed("ui_right"):
+		direction = Vector2.RIGHT
+	if Input.is_action_just_pressed("ui_left"):
+		direction = Vector2.LEFT
