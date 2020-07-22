@@ -43,7 +43,6 @@ func _physics_process(delta):
 			move(delta)
 		ATTACK:
 			attack()
-			
 
 func move(delta):
 	sprite.show()

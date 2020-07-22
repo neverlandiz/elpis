@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://World/background.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Portal/Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemy/Slime.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Display/Inventory/Potion.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Display/Display.tscn" type="PackedScene" id=8]
 
 [node name="World4" type="Node2D"]
 
@@ -60,3 +62,15 @@ collision_mask = 65
 [node name="Slime4" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 1456, 164 )
 collision_mask = 65
+
+[node name="Items" type="YSort" parent="YSort"]
+
+[node name="Potion" parent="YSort/Items" instance=ExtResource( 7 )]
+
+[node name="Potion2" parent="YSort/Items" instance=ExtResource( 7 )]
+position = Vector2( 64.2385, 30.5436 )
+
+[node name="Potion3" parent="YSort/Items" instance=ExtResource( 7 )]
+position = Vector2( 97.9334, 13.0901 )
+
+[node name="Display" parent="." instance=ExtResource( 8 )]

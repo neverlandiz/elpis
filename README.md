@@ -4,29 +4,34 @@
 # TASKS
 
 ## Katherine
-- Hurtbox/Hitbox
-- Health
-- New World
+- Organize folders
+- Dashing
+- fix jump attacks
+- Checkpoints
 
 ## Kevin
-- Items
-- Inventory
-
-## Misc
-- More UI
-
-- Chests
-
 - NPCs
 - Dialogue boxes
+- Merchant NPCs (shop UI)
+- Popup confirmation menus
 
-- Dashing
+## Misc
+- Pseudo-quests
 - Projectiles
-
 - Saving
+- More UI
+- Chests
 
 ## Completed
 - Basic movement
 - Portals
 - Mobs
+- Hurtbox/Hitbox
+- Health
+- New World
+- Items
+- Inventory
+- toggle to hide inventory display
+- make UI move along with player
+- corner notifications
 
