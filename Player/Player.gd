@@ -9,10 +9,13 @@ export var FRICTION = 0.25
 export var AIR_RESISTANCE = 0.02
 export var GRAVITY = 200
 export var JUMP_FORCE = 125
+export var DASH_SPEED = 10
+export var DASH_MAX_SPEED = 180
 
 enum{
 	MOVE,
-	ATTACK
+	ATTACK,
+	DASH
 }
 
 var state = MOVE
@@ -43,6 +46,8 @@ func _physics_process(delta):
 			move(delta)
 		ATTACK:
 			attack()
+		DASH:
+			dash(delta)
 
 func move(delta):
 	sprite.show()
@@ -86,6 +91,8 @@ func move(delta):
 	
 	motion = move_and_slide(motion, Vector2.UP)
 	
+	if Input.is_action_just_pressed("Dash"):
+		state = DASH
 	
 	if Input.is_action_just_pressed("attack") and attackLock == false:
 		state = ATTACK
@@ -133,6 +140,30 @@ func _on_Hurtbox_invincibility_started():
 
 func _on_Hurtbox_invincibility_ended():
 	hurtAnimationPlayer.play("StopInvincibility")
+
+func dash(delta):
+	sprite.show()
+	attackRightSprite.hide()
+	attackLeftSprite.hide()
+	animationPlayer.play("Dash")
+	if direction == Vector2.RIGHT:
+		motion.x +=  DASH_SPEED * delta * ACCELERATION
+		motion.x = clamp(motion.x, -DASH_MAX_SPEED, DASH_MAX_SPEED)
+	elif direction == Vector2.LEFT:
+		motion.x -=  DASH_SPEED * delta * ACCELERATION
+		motion.x = clamp(motion.x, -DASH_MAX_SPEED, DASH_MAX_SPEED)
+	
+	check_direction()
+	sprite.flip_h = direction==Vector2.LEFT
+	motion.y += GRAVITY * delta
+	motion = move_and_slide(motion)
+	
+	if Input.is_action_just_pressed("attack"):
+		state = ATTACK
+
+func dash_animation_finished():
+	motion = motion * 0.8
+	state = MOVE
 
 func check_direction():
 	if Input.is_action_just_pressed("ui_right"):

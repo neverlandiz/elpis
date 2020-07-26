@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/background.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Enemy/Slime.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Display/Inventory/Potion.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Display/Display.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Save/Checkpoint.tscn" type="PackedScene" id=9]
 
 [node name="World4" type="Node2D"]
 
@@ -39,6 +40,9 @@ smoothing_enabled = true
 [node name="Door" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 1599, 140 )
 next_world = "res://Level/World5.tscn"
+
+[node name="Checkpoint" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 599.07, 117.988 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 11, 143 )
