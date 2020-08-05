@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://NPC/03 Night.png" type="Texture" id=1]
+[ext_resource path="res://Enemy/PlayerDetection.tscn" type="PackedScene" id=2]
+[ext_resource path="res://NPC/NPC.gd" type="Script" id=3]
+[ext_resource path="res://Display/Handlee-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://NPC/116573209_288417862225175_270996393348344602_n.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 36, 36, 36 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 180, 36, 36, 36 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 2.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 5.61546, 10 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 8
+font_data = ExtResource( 4 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 44.2485
+
+[node name="NPC" type="Area2D"]
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "Idle"
+frame = 1
+playing = true
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 17.6328, 18.0937 )
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 18.1243, -3.53645 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 365, 69, 56, 27 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -6.77896
+margin_top = -4.91634
+margin_right = 44.221
+margin_bottom = 6.08366
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerDetection" parent="." instance=ExtResource( 2 )]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="PlayerDetection" index="0"]
+modulate = Color( 1, 1, 1, 0.34902 )
+position = Vector2( 16.848, 19.5265 )
+shape = SubResource( 6 )
+
+[editable path="PlayerDetection"]

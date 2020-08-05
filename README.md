@@ -14,6 +14,9 @@
 - [x] Dashing
 - [x] fix jump attacks
 - [x] Checkpoints
+- [x] NPCs
+- [x] Dialogue boxes
+- [ ] First Boss
 
 ## Kevin
 - [x] Items
@@ -21,8 +24,6 @@
 - [x] Toggle to hide inventory display
 - [x] Make UI move along with player
 - [x] Corner notifications
-- [ ] NPCs
-- [ ] Dialogue boxes
 - [ ] Merchant NPCs (shop UI)
 - [ ] Popup confirmation menus
 

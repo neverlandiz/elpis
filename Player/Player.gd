@@ -41,6 +41,7 @@ func _ready():
 func _physics_process(delta):
 	check_direction()
 	
+	
 	match state:
 		MOVE:
 			move(delta)
@@ -50,6 +51,9 @@ func _physics_process(delta):
 			dash(delta)
 
 func move(delta):
+	if stats.enterConversation == true:
+		return
+	
 	sprite.show()
 	attackRightSprite.hide()
 	attackLeftSprite.hide()
@@ -98,6 +102,9 @@ func move(delta):
 		state = ATTACK
 
 func attack():
+	if stats.enterConversation == true:
+		return
+	
 	sprite.hide()
 	if(direction == Vector2.RIGHT and attackLock == false):
 		attackLeftSprite.hide()
@@ -126,9 +133,10 @@ func _on_Hurtbox_area_entered(area):
 	hurtbox.start_invincibility(0.6)
 	create_hit_effect()
 	
-	var enemyPos = enemyDetection.enemy.position
-	var dir = enemyPos - self.position
-	motion.x -= dir.x * 90
+	if enemyDetection.can_see_enemy():
+		var enemyPos = enemyDetection.enemy.position
+		var dir = enemyPos - self.position
+		motion.x -= dir.x * 50
 	
 	if(stats.health <= 0):
 		var playerDeathEffect = PlayerDeathEffect.instance()
@@ -142,6 +150,9 @@ func _on_Hurtbox_invincibility_ended():
 	hurtAnimationPlayer.play("StopInvincibility")
 
 func dash(delta):
+	if stats.enterConversation == true:
+		return
+	
 	sprite.show()
 	attackRightSprite.hide()
 	attackLeftSprite.hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://World/Mysterious Forest Night (update 3.0)/Mysterious Night Layer 05.png" type="Texture" id=1]
 [ext_resource path="res://World/Mysterious Forest Night (update 3.0)/Mysterious Night Layer 02.png" type="Texture" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Portal/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/TileMap.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Display/Display.tscn" type="PackedScene" id=9]
+[ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemy/Boss.tscn" type="PackedScene" id=11]
 
 [node name="World5" type="Node2D"]
 
@@ -35,6 +38,9 @@ position = Vector2( 19, 174 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="Boss" parent="." instance=ExtResource( 11 )]
+position = Vector2( 833.397, 82.7329 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -90,3 +96,8 @@ texture = ExtResource( 4 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 2032, 256 )
+
+[node name="Display" parent="." instance=ExtResource( 9 )]
+
+[node name="NPC" parent="." instance=ExtResource( 10 )]
+position = Vector2( 223.81, 142.877 )

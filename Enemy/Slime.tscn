@@ -9,7 +9,6 @@
 [ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Collisions/Hitbox.tscn" type="PackedScene" id=8]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 16, 24 )
@@ -102,7 +101,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 16 )
 animation = "Walk"
-frame = 8
+frame = 14
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

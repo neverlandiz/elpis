@@ -1,0 +1,225 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Stats/Stats.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemy/PlayerDetection.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy/Boss.gd" type="Script" id=3]
+[ext_resource path="res://Enemy/spritesheet.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/WanderController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Collisions/Hurtbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Collisions/Hitbox.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 19.2226, 27.4843 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 95.3005
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Attack:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 28.5653, 61.0228 ), Vector2( 45.3318, 23.0842 ), Vector2( 15.6028, -5.22124 ), Vector2( 7.21331, -9.9838 ), Vector2( -7.6317, -15.6718 ), Vector2( -6.75212, -15.8008 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "AttackRight"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Attack:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 49.6055, 1.63981 ), Vector2( 45.1103, 33.8562 ), Vector2( 5.02564, 47.0059 ), Vector2( -9.9021, 45.8946 ), Vector2( -26.4289, 38.9426 ), Vector2( -26.8357, 39.1725 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "HitEffect"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Run:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Run:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1, 2, 3, 4 ]
+}
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 16.8984, 26.9557 )
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 8.16515
+height = 0.841476
+
+[node name="Boss" type="KinematicBody2D"]
+collision_layer = 16
+script = ExtResource( 3 )
+
+[node name="Attack" type="Sprite" parent="."]
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 4 )
+centered = false
+hframes = 10
+frame = 6
+
+[node name="Run" type="Sprite" parent="."]
+position = Vector2( 9.54593, 5.58463 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 4 )
+centered = false
+hframes = 5
+frame = 1
+region_enabled = true
+region_rect = Rect2( 480, -10, 320, 90 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 47.5512, 59.8908 )
+shape = SubResource( 1 )
+
+[node name="PlayerDetection" parent="." instance=ExtResource( 2 )]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="PlayerDetection" index="0"]
+modulate = Color( 1, 1, 1, 0.462745 )
+position = Vector2( 47.5515, 59.7816 )
+shape = SubResource( 2 )
+
+[node name="Stats" parent="." instance=ExtResource( 1 )]
+max_health = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/AttackLeft = SubResource( 3 )
+anims/AttackRight = SubResource( 4 )
+anims/HitEffect = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Run = SubResource( 7 )
+
+[node name="WanderController" parent="." instance=ExtResource( 5 )]
+
+[node name="Hurtbox" parent="." instance=ExtResource( 6 )]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 47.4726, 59.8953 )
+shape = SubResource( 8 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 7 )]
+position = Vector2( 31.1967, 64.5885 )
+rotation = -1.91986
+collision_layer = 0
+collision_mask = 4
+damage = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 28.5653, 61.0228 )
+shape = SubResource( 9 )
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="PlayerDetection"]
+
+[editable path="Hurtbox"]
+
+[editable path="Hitbox"]

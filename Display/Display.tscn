@@ -8,22 +8,22 @@
 [ext_resource path="res://Display/Health/Health.gd" type="Script" id=6]
 [ext_resource path="res://Display/PopupDialog.gd" type="Script" id=7]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.505882, 0.305882, 0.305882, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 9
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 6
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 4
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 4
 font_data = ExtResource( 1 )
 
@@ -49,7 +49,7 @@ margin_left = 9.80675
 margin_top = -1.52588e-05
 margin_right = 118.807
 margin_bottom = 7.99998
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,7 +59,7 @@ margin_left = 30.992
 margin_top = -3.0
 margin_right = 87.992
 margin_bottom = 12.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Consumables"
 valign = 1
 __meta__ = {
@@ -93,7 +93,7 @@ __meta__ = {
 margin_top = 1.0
 margin_right = 90.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 align = 1
 autowrap = true
 uppercase = true
@@ -102,7 +102,7 @@ uppercase = true
 margin_top = 16.0
 margin_right = 90.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 align = 1
 autowrap = true
 __meta__ = {
@@ -118,7 +118,7 @@ margin_left = 33.6525
 margin_top = 54.318
 margin_right = 55.6525
 margin_bottom = 66.318
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "USE"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -170,7 +170,7 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 75.0
 margin_bottom = 15.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "test"
 
 [node name="Tween" type="Tween" parent="PopupDialog"]

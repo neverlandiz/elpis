@@ -3,6 +3,8 @@ extends "res://Stats/Stats.gd"
 signal add_item_to_inventory(itemName)
 signal display_popup_message(text)
 
+var enterConversation = false
+
 func addItem(itemName): 
 	emit_signal("add_item_to_inventory", itemName)
 	
