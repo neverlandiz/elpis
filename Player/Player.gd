@@ -51,7 +51,7 @@ func _physics_process(delta):
 			dash(delta)
 
 func move(delta):
-	if stats.enterConversation == true:
+	if stats.inConversation == true:
 		return
 	
 	sprite.show()
@@ -102,7 +102,7 @@ func move(delta):
 		state = ATTACK
 
 func attack():
-	if stats.enterConversation == true:
+	if stats.inConversation == true:
 		return
 	
 	sprite.hide()
@@ -150,7 +150,7 @@ func _on_Hurtbox_invincibility_ended():
 	hurtAnimationPlayer.play("StopInvincibility")
 
 func dash(delta):
-	if stats.enterConversation == true:
+	if stats.inConversation == true:
 		return
 	
 	sprite.show()

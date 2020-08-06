@@ -14,19 +14,21 @@ func _init():
 	
 func fillSlot(newItem, itemAmount): 
 	empty = false
-	subscript = Label.new()
-	subscript.set_text(str(itemAmount))
-
-	var dynamic_font = DynamicFont.new()
-	dynamic_font.font_data = load("res://Display/Handlee-Regular.ttf")
-	dynamic_font.size = 8
-	dynamic_font.outline_size = 0
-	subscript.rect_size.x = 14
-	subscript.rect_size.y = 16
-	subscript.align = Label.ALIGN_RIGHT
-	subscript.valign = Label.VALIGN_BOTTOM
-	subscript.add_font_override("font", dynamic_font)
-	subscript.add_color_override("font_color", Color.green)
-	set('custom_styles/label', subscript)
 	add_child(newItem)
-	add_child(subscript)
+	if itemAmount != -1: 		
+		subscript = Label.new()
+		subscript.set_text(str(itemAmount))
+	
+		var dynamic_font = DynamicFont.new()
+		dynamic_font.font_data = load("res://Display/Handlee-Regular.ttf")
+		dynamic_font.size = 8
+		dynamic_font.outline_size = 0
+		subscript.rect_size.x = 14
+		subscript.rect_size.y = 16
+		subscript.align = Label.ALIGN_RIGHT
+		subscript.valign = Label.VALIGN_BOTTOM
+		subscript.add_font_override("font", dynamic_font)
+		subscript.add_color_override("font_color", Color.green)
+		set('custom_styles/label', subscript)
+		add_child(subscript)
+

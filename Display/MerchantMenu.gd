@@ -14,6 +14,7 @@ const ITEMMAP = {
 	"Crystal": {
 		"itemImg": preload("res://Display/Inventory/Crystal.png"), 
 		"description": "dis is a crystal,\n Restores x2 health", 
+		"price": 10,
 		"effects": {
 			"health": 2
 		}
@@ -21,6 +22,7 @@ const ITEMMAP = {
 	"Potion": {
 		"itemImg": preload("res://Display/Inventory/Potion.png"), 
 		"description": "*genji voice*: i need healing!\n Restores x1 health", 
+		"price": 6, 
 		"effects": {
 			"health": 1
 		}
@@ -32,19 +34,10 @@ func getFreeSlot():
 		if slot.empty: 
 			return slot
 
-func addItem(itemName, quantity): 
-	if itemName in self.playerItems: 
-		self.playerItems[itemName]["amount"] += quantity
-		self.playerItems[itemName]["slot"].subscript.set_text(str(self.playerItems[itemName]["amount"]))
-	else:
-		self.playerItems[itemName] = {"amount": quantity}
-		createNewItem(itemName)
-
 func createNewItem(itemName):
 	var item = ItemClass.new(itemName, ITEMMAP[itemName]["itemImg"])
 	var slot = getFreeSlot()
-	slot.fillSlot(item, self.playerItems[itemName]["amount"])
-	self.playerItems[itemName]["slot"] = slot
+	slot.fillSlot(item, -1)
 
 func _ready():
 	self.visible = false
@@ -54,15 +47,18 @@ func _ready():
 		slotList.append(slot)
 		slots.add_child(slot)
 		slot.connect("gui_input", self, "slot_gui_input", [slot])
-
-	for itemName in self.playerItems:	# Load existing items for player
-		createNewItem(itemName)
 	
-	PlayerStats.connect("add_item_to_inventory", self, "addItem")
-
+	PlayerStats.connect("add_item_to_merchant", self, "loadMerchantWares")
+	
 func _physics_process(delta):
-	if Input.is_action_just_pressed("toggle_inventory"):
-		self.visible = !self.visible
+	if Input.is_action_just_pressed("ui_cancel"):
+		self.visible = false
+
+func loadMerchantWares(merchantName, itemNames): 
+	self.visible = true
+	get_node("Title/Label").set_text(merchantName)	
+	for itemName in itemNames:
+		createNewItem(itemName)
 		
 func slot_gui_input(event: InputEvent, slot: ItemSlotClass): 
 	if event is InputEventMouseButton: 
@@ -78,17 +74,10 @@ func displayItemInfo(itemName):
 	
 # Use item
 func _on_Button_pressed(): 
-	if !displayingItem or self.playerItems[displayingItem]["amount"] <= 0: 
+	if !displayingItem: 
 		return
 	var itemName = displayingItem
-	print("Using item " + itemName)
-	if "health" in ITEMMAP[itemName]["effects"]: 
-		if PlayerStats.health == PlayerStats.max_health: 
-#			get_parent().get_node("PopupDialog").message("Health already full!")
-			PlayerStats.sendPopupMessage("Health already full!")
-			return
-		PlayerStats.health += ITEMMAP[itemName]["effects"]["health"]
-		print("Increasing health by " + str(ITEMMAP[displayingItem]["effects"]["health"]))
-		
-	self.playerItems[itemName]["amount"] -= 1
-	self.playerItems[itemName]["slot"].subscript.set_text(str(self.playerItems[itemName]["amount"]))
+	print("Purchased item " + itemName)
+	# Deduct money + Not enough money 
+
+	PlayerStats.addItem(itemName, 1)
