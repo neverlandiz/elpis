@@ -247,8 +247,9 @@ margin_left = 33.6525
 margin_top = 54.318
 margin_right = 55.6525
 margin_bottom = 66.318
+grow_horizontal = 2
+grow_vertical = 2
 custom_fonts/font = SubResource( 4 )
-text = "BUY"
 __meta__ = {
 "_edit_use_anchors_": false
 }

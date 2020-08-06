@@ -1,36 +1,10 @@
-extends NinePatchRect
+extends "res://Display/ItemGrid.gd"
 
-const ItemSlotClass = preload("res://Display/Inventory/ItemSlot.gd");
-const ItemClass = preload("res://Display/Inventory/Item.gd");
-var slotList = Array()
-var displayingItem = null
-var playerItems = {"Crystal": {
-	"amount": 3, 
-	"slot": null
-	}
-}
-
-const ITEMMAP = {
+var playerItems = {
 	"Crystal": {
-		"itemImg": preload("res://Display/Inventory/Crystal.png"), 
-		"description": "dis is a crystal,\n Restores x2 health", 
-		"effects": {
-			"health": 2
-		}
-	}, 
-	"Potion": {
-		"itemImg": preload("res://Display/Inventory/Potion.png"), 
-		"description": "*genji voice*: i need healing!\n Restores x1 health", 
-		"effects": {
-			"health": 1
-		}
+		"amount": 3, 
 	}
 }
-
-func getFreeSlot(): 
-	for slot in slotList: 
-		if slot.empty: 
-			return slot
 
 func addItem(itemName, quantity): 
 	if itemName in self.playerItems: 
@@ -39,6 +13,12 @@ func addItem(itemName, quantity):
 	else:
 		self.playerItems[itemName] = {"amount": quantity}
 		createNewItem(itemName)
+		
+func getItemQuantity(itemName): 
+	if itemName in self.playerItems: 
+		PlayerStats.tempItemQuantity = self.playerItems[itemName]["amount"]
+	else: 
+		PlayerStats.tempItemQuantity = 0
 
 func createNewItem(itemName):
 	var item = ItemClass.new(itemName, ITEMMAP[itemName]["itemImg"])
@@ -59,23 +39,13 @@ func _ready():
 		createNewItem(itemName)
 	
 	PlayerStats.connect("add_item_to_inventory", self, "addItem")
+	PlayerStats.connect("get_item_quantity_in_inventory", self, "getItemQuantity")
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("toggle_inventory"):
-		self.visible = !self.visible
-		
-func slot_gui_input(event: InputEvent, slot: ItemSlotClass): 
-	if event is InputEventMouseButton: 
-		if event.button_index == BUTTON_LEFT && event.pressed: 
-			if (slot.get_child_count() > 0 && slot.get_child(0).itemName): 
-				displayItemInfo(slot.get_child(0).itemName)
-				
-func displayItemInfo(itemName): 
-	displayingItem = itemName
-	var itemDescription = ITEMMAP[itemName]["description"]
-	get_node("InfoContainer/ItemName").set_text("<" + itemName + ">")	
-	get_node("InfoContainer/ItemDescription").set_text(itemDescription)
-	
+		self.visible = true
+		PlayerStats.menuOpen = true
+
 # Use item
 func _on_Button_pressed(): 
 	if !displayingItem or self.playerItems[displayingItem]["amount"] <= 0: 
@@ -84,7 +54,6 @@ func _on_Button_pressed():
 	print("Using item " + itemName)
 	if "health" in ITEMMAP[itemName]["effects"]: 
 		if PlayerStats.health == PlayerStats.max_health: 
-#			get_parent().get_node("PopupDialog").message("Health already full!")
 			PlayerStats.sendPopupMessage("Health already full!")
 			return
 		PlayerStats.health += ITEMMAP[itemName]["effects"]["health"]

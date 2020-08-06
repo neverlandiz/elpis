@@ -41,7 +41,6 @@ func _ready():
 func _physics_process(delta):
 	check_direction()
 	
-	
 	match state:
 		MOVE:
 			move(delta)
@@ -75,6 +74,7 @@ func move(delta):
 	motion.y += GRAVITY * delta
 	
 	if is_on_floor():
+		PlayerStats.isOnFloor = true
 		attackLock = false
 		if x_input == 0:
 			motion.x = lerp(motion.x, 0, FRICTION)
@@ -82,6 +82,7 @@ func move(delta):
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = -JUMP_FORCE
 	else:
+		PlayerStats.isOnFloor = false
 		if(motion.y < 0):
 			animationPlayer.play("JumpUp")
 		else:

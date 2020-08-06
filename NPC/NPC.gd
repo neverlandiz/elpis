@@ -49,7 +49,9 @@ func _physics_process(_delta):
 	if playerDetection.can_see_player():
 		label.visible = true
 		renderDialogue()
-		if Input.is_action_just_pressed("ui_accept"):
+		
+		# Check if player is on the ground here
+		if Input.is_action_just_pressed("ui_accept") and PlayerStats.isOnFloor and !PlayerStats.menuOpen:
 			playerStats.inConversation = true
 			self.dialogueIndex += 1
 			renderDialogue()
