@@ -40,3 +40,4 @@ func _on_Button_pressed():
 		PlayerStats.sendPopupMessage("Purchased item: " + itemName)
 		PlayerStats.drachma -= ITEMMAP[itemName]["price"]
 		PlayerStats.addItem(itemName, 1)
+		displayItemInfo(itemName)

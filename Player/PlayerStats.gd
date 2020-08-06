@@ -14,8 +14,7 @@ var tempItemQuantity = -1
 
 func set_drachma(value):
 	drachma = value
-	emit_signal("drachma_changed", health)
-	print(drachma)
+	emit_signal("drachma_changed", drachma)
 
 func addItem(itemName, quantity): 
 	emit_signal("add_item_to_inventory", itemName, quantity)

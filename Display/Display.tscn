@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Display/Handlee-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Display/Inventory/Panel.png" type="Texture" id=2]
@@ -8,6 +8,14 @@
 [ext_resource path="res://Display/Health/Health.gd" type="Script" id=6]
 [ext_resource path="res://Display/PopupDialog.gd" type="Script" id=7]
 [ext_resource path="res://Display/MerchantMenu.gd" type="Script" id=8]
+[ext_resource path="res://Display/Drachma.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://Display/Handlee-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 12
+font_data = SubResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.505882, 0.305882, 0.305882, 1 )
@@ -31,10 +39,10 @@ font_data = ExtResource( 1 )
 [node name="Display" type="CanvasLayer"]
 
 [node name="Health" type="Control" parent="."]
-margin_left = 6.4866
-margin_top = 8.95768
-margin_right = 46.4866
-margin_bottom = 48.9577
+margin_left = 6.0
+margin_top = 9.0
+margin_right = 46.0
+margin_bottom = 25.0
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,7 +68,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Drachma" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Drachma"]
+margin_left = 6.73524
+margin_top = 22.8412
+margin_right = 46.7352
+margin_bottom = 39.8412
+custom_fonts/font = SubResource( 7 )
+text = "$ xxx"
+
 [node name="Inventory" type="NinePatchRect" parent="."]
+visible = false
 margin_left = 34.6056
 margin_top = 29.6946
 margin_right = 284.606
@@ -156,6 +181,7 @@ __meta__ = {
 }
 
 [node name="MerchantMenu" type="NinePatchRect" parent="."]
+visible = false
 margin_left = 34.6056
 margin_top = 29.6946
 margin_right = 284.606

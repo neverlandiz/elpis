@@ -34,10 +34,10 @@
   - display price
   - disable interact when merchant or inventory menu is open
   - display how much of the item the player has
-- [ ] Drachma display
+- [x] Drachma display
+
 - [ ] NPC "talked-to" state
 - [ ] Large text display, announcing the storyline
-
 - [ ] Need to redesign popup notifications
 - [ ] Popup confirmation menus
 - [ ] Scattering loot that floats into the player
