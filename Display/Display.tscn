@@ -10,29 +10,29 @@
 [ext_resource path="res://Display/MerchantMenu.gd" type="Script" id=8]
 [ext_resource path="res://Display/Drachma.gd" type="Script" id=9]
 
-[sub_resource type="DynamicFontData" id=6]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://Display/Handlee-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=2]
 size = 12
-font_data = SubResource( 6 )
+font_data = SubResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.505882, 0.305882, 0.305882, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 9
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 6
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 4
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 4
 font_data = ExtResource( 1 )
 
@@ -81,7 +81,7 @@ margin_left = 6.73524
 margin_top = 22.8412
 margin_right = 46.7352
 margin_bottom = 39.8412
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 2 )
 text = "$ xxx"
 
 [node name="Inventory" type="NinePatchRect" parent="."]
@@ -105,7 +105,7 @@ margin_left = 9.80675
 margin_top = -1.52588e-05
 margin_right = 118.807
 margin_bottom = 7.99998
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -115,7 +115,7 @@ margin_left = 30.992
 margin_top = -3.0
 margin_right = 87.992
 margin_bottom = 12.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "Consumables"
 valign = 1
 __meta__ = {
@@ -149,7 +149,7 @@ __meta__ = {
 margin_top = 1.0
 margin_right = 90.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 align = 1
 autowrap = true
 uppercase = true
@@ -158,7 +158,7 @@ uppercase = true
 margin_top = 16.0
 margin_right = 90.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 align = 1
 autowrap = true
 __meta__ = {
@@ -174,7 +174,7 @@ margin_left = 33.6525
 margin_top = 54.318
 margin_right = 55.6525
 margin_bottom = 66.318
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 text = "USE"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -201,7 +201,7 @@ margin_left = 9.80675
 margin_top = -1.52588e-05
 margin_right = 118.807
 margin_bottom = 7.99998
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -210,7 +210,7 @@ __meta__ = {
 margin_top = -3.0
 margin_right = 109.0
 margin_bottom = 12.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "npc_name"
 align = 1
 valign = 1
@@ -245,7 +245,7 @@ __meta__ = {
 margin_top = 1.0
 margin_right = 90.0
 margin_bottom = 13.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 align = 1
 autowrap = true
 uppercase = true
@@ -257,7 +257,7 @@ __meta__ = {
 margin_top = 16.0
 margin_right = 90.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 align = 1
 autowrap = true
 __meta__ = {
@@ -275,7 +275,7 @@ margin_right = 55.6525
 margin_bottom = 66.318
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -295,7 +295,7 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 75.0
 margin_bottom = 15.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "test"
 __meta__ = {
 "_edit_use_anchors_": false

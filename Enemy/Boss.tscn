@@ -12,7 +12,7 @@
 extents = Vector2( 19.2226, 27.4843 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 95.3005
+radius = 174.381
 
 [sub_resource type="Animation" id=3]
 length = 0.6
