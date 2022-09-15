@@ -1,7 +1,7 @@
 
 # Project Elpis
 
-[![Trailer](elpis trailer image.png)](https://www.youtube.com/watch?v=WP5z9PeS1fU&ab_channel=Neverlandiz)
+[![Trailer](elpis_trailer.png)](https://www.youtube.com/watch?v=WP5z9PeS1fU&ab_channel=Neverlandiz)
 
 # TASKS
 
