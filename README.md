@@ -7,7 +7,7 @@
 
 ## Dev Blog
 
-[Dev Blog](https://dev.to/elpis)
+[Dev Blog Link](https://dev.to/elpis)
 
 # TASKS
 
