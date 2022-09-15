@@ -5,6 +5,10 @@
 
 [![Trailer](elpis_trailer.png)](https://www.youtube.com/watch?v=WP5z9PeS1fU&ab_channel=Neverlandiz)
 
+## Dev Blog
+
+[Dev Blog](https://dev.to/elpis)
+
 # TASKS
 
 ## Katherine
