@@ -20,7 +20,7 @@
 - [x] Checkpoints
 - [x] NPCs
 - [x] Dialogue boxes
-- [ ] First Boss
+- [x] First Boss
 
 ## Kevin
 - [x] Items
